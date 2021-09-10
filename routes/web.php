@@ -21,8 +21,11 @@ Route::get('/articles', function () {
     return view('pages.article');
 })->middleware('toArticles');
 
+
+
+////Voir middleware roles. Si on est admin on peut aller sur le dashboard,sinon on ne peut pas
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth','roles'])->name('dashboard');
 
 require __DIR__.'/auth.php';

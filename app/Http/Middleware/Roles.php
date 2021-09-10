@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Articles
+class Roles
 {
     /**
      * Handle an incoming request.
@@ -17,8 +17,7 @@ class Articles
      */
     public function handle(Request $request, Closure $next)
     {
-        //si on est connecté
-        if (Auth::user()) {
+        if (Auth::user()->role_id==1) {
             return $next($request);
         }else{
             return redirect()->back();

@@ -14,6 +14,7 @@ Route::get('/register', [RegisteredUserController::class, 'create'])
                 ->middleware('guest')
                 ->name('register');
 
+// Quand on se connecte si on est Admin, on va vers le dashboard,sinon on va vers le home('/') Voir RegisteredUserController, au store(une fois qu'on a rempli le form)
 Route::post('/register', [RegisteredUserController::class, 'store'])
                 ->middleware('guest');
 

@@ -43,12 +43,22 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role_id'=>$request->role_id=2
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
+        
+         // Quand on se connecte si on est Admin, on va vers le dashboard,sinon on va vers le home('/')
 
+        if (Auth::user()->role_id == 1) {
         return redirect(RouteServiceProvider::HOME);
+        }else{
+            return redirect('/');
+        }
     }
 }
+
+
+    

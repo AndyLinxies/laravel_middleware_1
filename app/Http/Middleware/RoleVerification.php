@@ -4,9 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class Articles
+class RoleVerification
 {
     /**
      * Handle an incoming request.
@@ -17,11 +16,6 @@ class Articles
      */
     public function handle(Request $request, Closure $next)
     {
-        //si on est connecté
-        if (Auth::user()) {
-            return $next($request);
-        }else{
-            return redirect()->back();
-        }
+        return $next($request);
     }
 }
