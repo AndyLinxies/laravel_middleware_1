@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('editOnlySelf')->only(['edit', 'update']);
+    }
     /**
      * Display a listing of the resource.
      *

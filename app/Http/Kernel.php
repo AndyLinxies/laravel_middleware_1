@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'toArticles' => \App\Http\Middleware\Articles::class,
         'roles' => \App\Http\Middleware\Roles::class,
         'administrateur' => \App\Http\Middleware\Admin::class,
+        'editOnlySelf' => \App\Http\Middleware\EditOnlySelf::class,
     ];
 }

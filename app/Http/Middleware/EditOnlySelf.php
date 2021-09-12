@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Roles
+class EditOnlySelf
 {
     /**
      * Handle an incoming request.
@@ -17,10 +17,14 @@ class Roles
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->role_id==1||Auth::user()->role_id==3||Auth::user()->role_id==4) {
+        //Probleme bloque l'edit pour soi et les autres
+        $id=$request->route()->parameters()['article'];
+        if (Auth::user()->id == $id) {
             return $next($request);
-        }else{
+        } else {
+            //pas de return ('vous ne pouvez pas...') mais on peut mettre with warning ou with error etc...
             return redirect()->back();
         }
+        
     }
 }
