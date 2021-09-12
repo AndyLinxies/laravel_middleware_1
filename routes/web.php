@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\UserController;
+use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,11 +21,20 @@ Route::get('/', function () {
 });
 
 Route::get('/articles', function () {
-    return view('pages.article');
+    $articles =Article::all();
+    return view('pages.article',compact('articles'));
 })->middleware('toArticles');
 
-Route::resource('/dashboard/articles', ArticleController::class);
+Route::resource('/dashboard/articles', ArticleController::class)->middleware('roles');
 
+//on retourne la view show quand on clique sur la le tritre de l'article sans passer par le dashboard
+Route::get('/articles/{id}', function ($id) {
+    $article =Article::find($id);
+    return view('pages.back.showArtices',compact('article'));
+});
+
+//users dans le dashboard accessible que pour l'admin
+Route::get('/dashboard/users',[UserController::class,'index'])->middleware('administrateur');
 
 ////Voir middleware roles. Si on est admin on peut aller sur le dashboard,sinon on ne peut pas
 Route::get('/dashboard', function () {

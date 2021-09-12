@@ -52,7 +52,7 @@ class RegisteredUserController extends Controller
         
          // Quand on se connecte si on est Admin, on va vers le dashboard,sinon on va vers le home('/')
 
-        if (Auth::user()->role_id == 1) {
+        if (Auth::user()->role_id == 1 || Auth::user()->role_id ==3) {
         return redirect(RouteServiceProvider::HOME);
         }else{
             return redirect('/');

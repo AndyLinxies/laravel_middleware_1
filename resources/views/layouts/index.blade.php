@@ -18,9 +18,9 @@
 <body>
     <nav class="bg-white shadow dark:bg-gray-800 w-full">
         <div class="container flex items-center justify-center p-6 mx-auto text-gray-600 capitalize dark:text-gray-300 w-full">
-            <a href="/" class="{{request()->is('/') ? ('border-b-2'):null}} text-gray-800 dark:text-gray-200  border-blue-500 mx-1.5 sm:mx-6">Accueil</a>
+            <a href="/" class="{{request()->is('/') ? 'border-b-2':null}} text-gray-800 dark:text-gray-200  border-blue-500 mx-1.5 sm:mx-6">Accueil</a>
 
-            <a href="/articles" class="{{request()->is('/articles') ? ('border-b-2'):null}} text-gray-800 dark:text-gray-200  border-red-500 mx-1.5 sm:mx-6">Articles</a>
+            <a href="/articles" class="{{request()->is('/articles') ? 'border-b-2':null}} text-gray-800 dark:text-gray-200  border-red-500 mx-1.5 sm:mx-6" >Articles</a>
 
             
             <div class="flex items-center justify-end mt-4 md:mt-0 w-full">

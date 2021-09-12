@@ -17,7 +17,7 @@ class Roles
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->role_id==1) {
+        if (Auth::user()->role_id==1||Auth::user()->role_id==3) {
             return $next($request);
         }else{
             return redirect()->back();
