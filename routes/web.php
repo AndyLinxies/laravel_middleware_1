@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,7 @@ Route::get('/articles', function () {
     return view('pages.article');
 })->middleware('toArticles');
 
+Route::resource('/dashboard/articles', ArticleController::class);
 
 
 ////Voir middleware roles. Si on est admin on peut aller sur le dashboard,sinon on ne peut pas
